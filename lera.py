@@ -175,4 +175,3 @@ while True:
 		print(error)
 		apisay(error,adminlist[0],'')
 	data['ts'] = response['ts']
-

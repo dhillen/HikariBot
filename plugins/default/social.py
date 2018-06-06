@@ -66,7 +66,7 @@ if answ[1] == 'когда':
 	if randnum <= 4:
 		apisay(random.choice(['Никогда','Когда рак на горе свистнет','Очень скоро','Завтра']),toho,torep)
 	else:
-		apisay('Я уверена это случится '+str(random.randint(1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,torep)
+		apisay('Я уверена, '+answ_text+' случится '+str(random.randint(1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,'')
 if (answ[1]=='кто'):	
 					if (toho < 2000000000):
 						apisay('В личной переписке это не работает. Лишь в конфе',toho,torep)

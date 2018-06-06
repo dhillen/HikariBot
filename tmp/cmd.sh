@@ -1,1 +1,1 @@
-free -h
+cat system/cmds
