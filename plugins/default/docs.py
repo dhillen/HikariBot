@@ -8,7 +8,7 @@ if answ[1] == 'доки':
 		for item in res['response']['items']:
 			if fcount == 10:
 				break
-			if item['id'] in (474084484,444393573,337586976,467187768,170067184):
+			if item['id'] in (474084484,444393573,337586976,467187768,170067184,170126360,457132116,453208914,464271002):
 				continue
 			if item['title'].lower().find('theync') != -1:
 				continue
@@ -30,7 +30,7 @@ if answ[1] == 'гиф':
 		for item in res['response']['items']:
 			if fcount == 10:
 				break
-			if item['id'] in (474084484,444393573,337586976,467187768):
+			if item['id'] in (474084484,444393573,337586976,467187768,170067184,170126360,457132116,453208914,464271002):
 				continue
 			if item['title'].lower().find('theync') != -1:
 				continue
