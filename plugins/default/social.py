@@ -44,7 +44,7 @@ if (answ[1]=='надо'):
 		if answ_text.find('ли') != -1:
 			answ_text = answ_text.replace('ли', '')
 		if (random.randint(0,1)==0):
-			apisay(answ_text+' ,как по мне, не стоит',toho,'')
+			apisay(answ_text+ ',как по мне, не стоит',toho,'')
 		else:
 			apisay('Да, надо '+answ_text,toho,'')
 	except:
@@ -66,7 +66,7 @@ if answ[1] == 'когда':
 	if randnum <= 4:
 		apisay(random.choice(['Никогда','Когда рак на горе свистнет','Очень скоро','Завтра']),toho,torep)
 	else:
-		apisay('Я уверена, '+answ_text+' случится '+str(random.randint(1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,'')
+		apisay('Я думаю, ' +answ_text+' '+str(random.randint( 1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,'')
 if (answ[1]=='кто'):	
 					if (toho < 2000000000):
 						apisay('В личной переписке это не работает. Лишь в конфе',toho,torep)
@@ -102,7 +102,7 @@ if answ[1] == 'id':
 		ret = json.loads(ret)['response']['items'][0]['fwd_messages'][0]['user_id']
 		apisay('id пользователя: '+str(ret), toho, torep)
 	except:
-		apisay('Ваш id: '+str(userid), toho, torep)
+		apisay('Ваш id: '+str(userid), toho, '')
 if answ[1] == 'дата':
 	apisay(time.ctime(),toho,torep)
 if (answ[0] in kb_name and answ[1] in ['гусь']):
@@ -110,10 +110,10 @@ if (answ[0] in kb_name and answ[1] in ['гусь']):
 #Потихоньку учу Леру своим ответам.
 if answ[1] == 'цит':
 	quotes = json.loads(open('files/txt/quotes/quote_cit','r').read())
-	apisay(quotes[random.randint(0,len(quotes)-1)],toho,'')
+	apisay(random.choice(quotes), toho, '')
 if (answ[0] in kb_name and answ[1] in ['няша','молодец','крутая']):
 	quotes = json.loads(open('files/txt/quotes/quote_positive','r').read())
-	apisay(quotes[random.randint(0,len(quotes)-1)],toho,'')
+	apisay(random.choice(quotes), toho, '')
 if (answ[0] in kb_name and answ[1] in ['соси','пошла','шлюха','пидор']):
 	quotes = json.loads(open('files/txt/quotes/quote_negative','r').read())
-	apisay(quotes[random.randint(0,len(quotes)-1)],toho,'')
+	apisay(random.choice(quotes), toho, '')
