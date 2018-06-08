@@ -5,7 +5,7 @@ if answ[1] == 'видео':
 		info = ''
 		if (res['response']['count'] != 0):
 			for item in res['response']['items']:
-				if item['id'] in (170754590,170631958,170067184):
+				if item['id'] in (170754590,170631958,170067184,168063882,160911967,140239214,1609119666,166873080,166873080,166873080,166873080,166873080,166873080,166873080):
 					continue
 				if item['title'].lower().find('theync') != -1:
 					continue

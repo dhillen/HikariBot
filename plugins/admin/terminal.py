@@ -1,7 +1,7 @@
 import subprocess
 if answ[1] == '!':
 	if (answ_text == ''):
-		apisay('А текст мб стоит вписать?)',toho,torep)
+		apisay('Команду, мудень, не написал.',toho,'')
 	else:
 		cmd = answ_text.split('<br>')
 		with open('tmp/cmd.sh', 'w') as cl:
@@ -9,4 +9,4 @@ if answ[1] == '!':
 				cl.write(cmd[i]+'\n')
 		shell = subprocess.Popen('chmod 755 tmp/cmd.sh;bash tmp/cmd.sh',shell=True,stdout=subprocess.PIPE)
 		output = shell.communicate()[0]
-		apisay(output,toho,torep)
+		apisay(output,toho,'')
