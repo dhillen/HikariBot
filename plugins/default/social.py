@@ -61,12 +61,12 @@ if (answ[0] in kb_name and answ[1] in ['стат','статус','стата']):
 if answ[1] == 'обнова':
         apisay(open('files/txt/upd','r').read(),toho,torep)
 if answ[1] == 'когда':
-	months = ['сентября','октября','ноября','декабря','января','февраля','марта','апреля','мая','июня','июля','августа']
-	randnum = random.randint(0,10)
-	if randnum <= 4:
-		apisay(random.choice(['Никогда','Когда рак на горе свистнет','Очень скоро','Завтра']),toho,torep)
-	else:
-		apisay('Я думаю, ' +answ_text+' '+str(random.randint( 1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,'')
+        months = ['сентября','октября','ноября','декабря','января','февраля','марта','апреля','мая','июня','июля','августа']
+        randnum = random.randint(0,10)
+        if randnum <= 4:
+                apisay(random.choice(['Никогда','Когда рак на горе свистнет','Очень скоро','Завтра']),toho,torep)
+        else:
+                apisay('Я думаю, ' +answ_text+' '+str(random.randint( 1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,'')
 if (answ[1]=='кто'):	
 					if (toho < 2000000000):
 						apisay('В личной переписке это не работает. Лишь в конфе',toho,torep)
@@ -93,7 +93,7 @@ if (answ[1]=='кто'):
 if (answ[1]=='кофейник'):	
         apisay('vkcoffee.operator555.su',toho,'')
 if answ[1] == 'помощь':
-	apisay(open('files/txt/help','r').read(),toho,'')
+	apisay(open('files/txt/help','r').read(),toho,torep)
 if answ[1] == 'id':
 	param = (('v','5.68'),('access_token',token),('message_ids',torep))
 	ret = requests.post('https://api.vk.com/method/messages.getById',data = param).text

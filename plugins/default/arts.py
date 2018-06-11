@@ -1,3 +1,4 @@
+#danbooru
 if answ[1] == 'бура':
 	if answ_text.split(' ')[0] in kb_name:
 		r34text = ''
@@ -26,6 +27,7 @@ if answ[1] == 'бура':
 			apisay('Ничего не найдено :(',toho,torep)
 	except AttributeError:
 		apisay('Ничего не найдено :(',toho,torep)
+#rule34
 if answ[1] == '34':
 	if 1==1:
 		if answ_text.split(' ')[0] in kb_name:
@@ -34,7 +36,7 @@ if answ[1] == '34':
 			r34text = answ_text
 		try:
 			try:
-				blacklist = '-fur+-darling_in_the_franxx+-furry+-dragon+-guro+-animal_penis+-animal+-wolf+-fox+-webm+-my_little_pony+-monster*+-3d+-animal*+-ant+-insects+-mammal+-horse+-blotch+-deer+-real*+-shit+-everlasting_summer+-copro*+-wtf+'
+				blacklist = '-fur+-furry+-dragon+-guro+-animal_penis+-animal+-wolf+-fox+-webm+-my_little_pony+-monster*+-3d+-animal*+-ant+-insects+-mammal+-horse+-blotch+-deer+-real*+-shit+-copro*+-wtf+'
 				parse = untangle.parse('http://0s.oj2wyzjtgqxhq6dy.cmle.ru/index.php?page=dapi&s=post&q=index&limit=100&tags='+blacklist+str(r34text))
 				randnum = random.randint(0,len(parse.posts.post))
 				#print(parse.posts.post[randnum])
@@ -69,6 +71,7 @@ if answ[1] == '34':
 				apisay('Ничего не найдено :(',toho,torep)
 		except AttributeError:
 			apisay('Ничего не найдено :(',toho,torep)
+#rule63
 if answ[1] == '63':
 	if answ_text.split(' ')[0] in kb_name:
 		r34text = ''
@@ -76,7 +79,7 @@ if answ[1] == '63':
 		r34text = answ_text
 	try:
 		try:
-			blacklist = '-fur+-darling_in_the_franxx+-furry+-dragon+-guro+-animal_penis+-animal+-wolf+-fox+-webm+-my_little_pony+-monster*+-3d+-animal*+-ant+-insects+-mammal+-horse+-blotch+-deer+-real*+-shit+-everlasting_summer+-copro*+-wtf+'
+			blacklist = '-fur+-furry+-dragon+-guro+-animal_penis+-animal+-wolf+-fox+-webm+-my_little_pony+-monster*+-3d+-animal*+-ant+-insects+-mammal+-horse+-blotch+-deer+-real*+-shit+-copro*+-wtf+'
 			parse = untangle.parse('http://rule63.xxx/index.php?page=dapi&s=post&q=index&limit=100&tags='+blacklist+str(r34text))
 			randnum = random.randint(0,len(parse.posts.post))
 			#print(parse.posts.post[randnum])
