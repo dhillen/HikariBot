@@ -1,3 +1,4 @@
+#Инфо о боте
 if answ[1] == 'инфо':
 	apisay(open('files/txt/info','r').read(),toho,'')
 if answ[1] == 'инфа':
@@ -92,8 +93,10 @@ if (answ[1]=='кто'):
 							apisay('Ты!', toho, torep)
 if (answ[1]=='кофейник'):	
         apisay('vkcoffee.operator555.su',toho,'')
+#Помощь
 if answ[1] == 'помощь':
 	apisay(open('files/txt/help','r').read(),toho,torep)
+#Узнать ID
 if answ[1] == 'id':
 	param = (('v','5.68'),('access_token',token),('message_ids',torep))
 	ret = requests.post('https://api.vk.com/method/messages.getById',data = param).text
@@ -103,10 +106,19 @@ if answ[1] == 'id':
 		apisay('id пользователя: '+str(ret), toho, torep)
 	except:
 		apisay('Ваш id: '+str(userid), toho, '')
+#Локальные дата и время
 if answ[1] == 'дата':
 	apisay(time.ctime(),toho,torep)
+#Гусь
 if (answ[0] in kb_name and answ[1] in ['гусь']):
 	apisay(open('system/goose','r').read(),toho,torep)
+#Оценка
+if answ[1] == 'оцени':
+        randnum = random.randint(0,10)
+        if randnum <= 2:
+                apisay(random.choice(['Уебище','Мои глаза','Умри','Топ','12/10, отвечаю','Я все равно лучше','Чмоня']),toho,torep)
+        else:
+                apisay('Я оцениваю '+answ_text+' на ' +str(random.randint(0,10))+' из 10',toho,torep)
 #Потихоньку учу Леру своим ответам.
 if answ[1] == 'цит':
 	quotes = json.loads(open('files/txt/quotes/quote_cit','r').read())
