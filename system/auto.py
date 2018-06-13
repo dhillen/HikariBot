@@ -19,3 +19,7 @@ if 'source_act' in result[6]:
 #Ебучий гусь
 if result[5].lower().find('гусь') != -1:
     apisay(open('files/txt/gusi/goose'+str(random.randint(1,12)),'r').read(),toho,'')
+#Отправляет луну
+if result[5].lower().find('луна') != -1:
+	quotes = json.loads(open('files/txt/quotes/moon','r').read())
+	apisay(random.choice(quotes), toho, '')

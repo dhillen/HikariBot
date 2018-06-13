@@ -118,7 +118,7 @@ if answ[1] == 'оцени':
         if randnum <= 2:
                 apisay(random.choice(['Уебище','Мои глаза','Умри','Топ','12/10, отвечаю','Я все равно лучше','Чмоня']),toho,torep)
         else:
-                apisay('Я оцениваю '+answ_text+' на ' +str(random.randint(0,10))+' из 10',toho,torep)
+                apisay('Я оцениваю '+answ_text+' на '+str(random.randint(0,10))+' из 10',toho,torep)
 #Потихоньку учу Леру своим ответам.
 if answ[1] == 'цит':
 	quotes = json.loads(open('files/txt/quotes/quote_cit','r').read())
