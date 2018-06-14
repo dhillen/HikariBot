@@ -125,6 +125,8 @@ if (answ[1]=='повтори'):
 		apisay('А что мне повторить то?',toho,'')
 	else:
 		apisay(answ_text,toho,'')
+if answ[1] == 'анонимка':
+	apisay(open('files/txt/anon','r').read(),toho,'')
 #Потихоньку учу Леру своим ответам.
 if answ[1] == 'цит':
 	quotes = json.loads(open('files/txt/quotes/quote_cit','r').read())
