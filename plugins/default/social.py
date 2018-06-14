@@ -119,6 +119,12 @@ if answ[1] == 'оцени':
                 apisay(random.choice(['Уебище','Мои глаза','Умри','Топ','12/10, отвечаю','Я все равно лучше','Чмоня']),toho,torep)
         else:
                 apisay('Я оцениваю '+answ_text+' на '+str(random.randint(0,10))+' из 10',toho,torep)
+#Повторитель
+if (answ[1]=='повтори'):
+	if (answ_text == ''):
+		apisay('А что мне повторить то?',toho,'')
+	else:
+		apisay(answ_text,toho,'')
 #Потихоньку учу Леру своим ответам.
 if answ[1] == 'цит':
 	quotes = json.loads(open('files/txt/quotes/quote_cit','r').read())
