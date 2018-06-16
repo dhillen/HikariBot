@@ -19,7 +19,11 @@ logging.error("An error has happened!")
 token = open('system/cfg/token','r').read()
 token = token.split('\n')[0]
 kb_name = json.loads(open('system/cfg/name','r').read())['names']
+answer_x = 0
+answer_time = time.time()*100000 #заморозка бота при активных действиях
+#Лонгполл
 def apisay(text,toho,torep):
+	time.sleep(random.randint(0,3)) #таймаут ответа бота, защита от капчи
 	param = (('v', '5.68'), ('peer_id', toho),('access_token',token),('message',text),('forward_messages',torep))
 	result = requests.post('https://api.vk.com/method/messages.send', data=param)
 	return result.text
@@ -80,6 +84,9 @@ game_module = open('system/game_module','r').read()
 game_module = json.loads(game_module)
 print('Лера запущена')
 while True:
+	if (time.time() - answer_time) > 60:
+		answer_x = 0
+		answer_time = time.time()*100000
 	try:
 		response = requests.get('https://{server}?act=a_check&key={key}&ts={ts}&wait=20&mode=2&version=2'.format(server=data['server'], key=data['key'], ts=data['ts'])).json() 
 		try: 

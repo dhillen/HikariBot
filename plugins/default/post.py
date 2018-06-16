@@ -13,6 +13,10 @@ if answ[1] == 'пост':
 			domain = random.choice(groups['fap'])
 		elif answ[2] == 'бугурт':
 			domain = random.choice(groups['bugurt'])
+		elif answ[2] == 'си':
+			domain = random.choice(groups['sbrod'])
+		elif answ[2] == 'хентай':
+			domain = random.choice(groups['hentai'])
 		elif answ[2] == 'юморсека':
 			domain = random.choice(groups['humor'])
 		else:
