@@ -158,7 +158,7 @@ while True:
 									pass
 							else:
 								if answ[1] in kb_cmd['vip']:
-									apisay('Тебя нет в вайтлисте чтоб юзать эту команду, пуся',toho,torep)
+									apisay('Прости, но ты не VIP',toho,torep)
 							if str(userid) in adminlist:
 								try:
 									thr1 = threading.Thread(target=evalcmds,args=('plugins/admin',toho,torep,answ,answ_text))
@@ -167,7 +167,7 @@ while True:
 									pass
 							else:
 								if answ[1] in kb_cmd['admin']:
-									apisay('А ты что тут забыл? Ты охуел?',toho,torep)
+									apisay('Доступ к консоли только у админа, остальные нахуй',toho,torep)
 						if ((answ[0] in kb_name) and (answ[1] not in kb_cmd["default"]) and (answ[1] not in kb_cmd["vip"]) and (answ[1] not in kb_cmd["admin"]) and (str(userid) not in game_module['active_users'])):
 							blacklistcmds = ['гиф1','преакт1','цитата1','гцитата1']
 							if answ[1] not in blacklistcmds:
