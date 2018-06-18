@@ -1,3 +1,4 @@
+import datetime
 #Инфо о боте
 if answ[1] == 'инфо':
 	apisay(open('files/txt/info','r').read(),toho,'')
@@ -34,7 +35,7 @@ if (answ[1]=='кого'):
 						else:
 							apisay('Вангую, это '+answ_text+ '  - '+name,toho,'')
 if answ[1] == 'модули':
-	apisay('<br>'.join(dir),toho,torep)
+	apisay('<br>'.join(dir),toho,'')
 if (answ[1]=='надо'):
 	
 	try:
@@ -50,17 +51,20 @@ if (answ[1]=='надо'):
 			apisay('Да, надо '+answ_text,toho,'')
 	except:
 		apisay('Надоел уже, свали', toho, torep)
+#Статистика
 if (answ[0] in kb_name and answ[1] in ['стат','статус','стата']):
-	text = '[ Статистика ]<br>Система:<br>&#8195;Процессоры:<br>'
+	text = '[Инфо о системе]<br>Система:<br>&#8195;Процессоры:<br>'
 	for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)):
 		text += '&#8195;&#8195;Ядро №'+str(idx+1)+': '+str(cpu)+'%<br>'
 	mem = psutil.virtual_memory()
 	MB = 1024 * 1024
-	text += '&#8195;ОЗУ:<br>&#8195;&#8195;Всего: '+str(int(mem.total / MB))+'MB<br>&#8195;&#8195;Использовано: '+str(int((mem.total - mem.available) / MB))+'MB<br>&#8195;&#8195;Свободно: '+str(int(mem.available / MB))+'MB'
-	param = (('v', '5.68'), ('peer_id',toho), ('access_token', token),('message', text),('forward_messages',torep))
+	text += '&#8195;ОЗУ:<br>&#8195;&#8195;Всего: '+str(int(mem.total / MB))+'MB<br>&#8195;&#8195;Использовано: '+str(int((mem.total - mem.available) / MB))+'MB<br>&#8195;&#8195;Свободно: '+str(int(mem.available / MB))+'MB<br>&#8195;&#8195;Использовано ботом: '+str(int(psutil.Process().memory_info().vms / 10000000))+'MB<br>&#8195;'
+	param = (('v', '5.68'), ('peer_id',toho), ('access_token', token),('message', text)) #,('forward_messages',torep))
 	requests.post('https://api.vk.com/method/messages.send', param)
+#Обнова
 if answ[1] == 'обнова':
         apisay(open('files/txt/upd','r').read(),toho,torep)
+#Когда
 if answ[1] == 'когда':
         months = ['сентября','октября','ноября','декабря','января','февраля','марта','апреля','мая','июня','июля','августа']
         randnum = random.randint(0,10)
@@ -68,6 +72,7 @@ if answ[1] == 'когда':
                 apisay(random.choice(['Никогда','Когда рак на горе свистнет','Очень скоро','Завтра']),toho,torep)
         else:
                 apisay('Я думаю, ' +answ_text+' '+str(random.randint( 1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,'')
+#Кто
 if (answ[1]=='кто'):	
 					if (toho < 2000000000):
 						apisay('В личной переписке это не работает. Лишь в конфе',toho,torep)
