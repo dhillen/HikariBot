@@ -22,7 +22,7 @@ if 'source_act' in result[6]:
 			name = requests.post('https://api.vk.com/method/users.get', data=param)
 			name = json.loads(name.text)
 			name = name['response'][0]['first_name']+' '+name['response'][0]['last_name']
-			msg = ["Надеюсь, он не вернется", "Неееет!", "Не будем поминать", "Помянем его", "Вот и славно"]
+			msg = ["Надеюсь, он не вернется", "Неееет!", "Не будем поминать", "Помянем его", "Вот и славно","Пишем F","-1","Похуй"]
 			apisay('Пользователь '+name+' покинул нас.<br>'+random.choice(msg),toho,'')
 			answer_x += 1
 #Ебучий гусь
