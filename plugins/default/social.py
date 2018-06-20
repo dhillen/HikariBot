@@ -16,24 +16,7 @@ if answ[1] == 'инфа':
 		answ_text = answ_text.replace('я ', 'ты ')
 	
 	apisay('Вероятность того, что '+answ_text+' равна '+str(random.randint(0,146))+'%',toho,'')
-if (answ[1]=='кого'):	
-					if (toho < 2000000000):
-						apisay('В личной переписке это не работает. Лишь в конфе',toho,torep)
-					else:
-						resapi = toho-2000000000;
-						text = answ
-						param = (('v', '5.68'), ('chat_id',resapi),('access_token',token))
-						res = requests.post('https://api.vk.com/method/messages.getChatUsers', data=param)
-						res = json.loads(res.text)
-						rand = random.randint(0,len(res['response'])-1)
-						param = (('v', '5.68'), ('user_ids',res['response'][rand]),('access_token',token))
-						name = requests.post('https://api.vk.com/method/users.get', data=param)
-						name = json.loads(name.text)
-						name = name['response'][0]['first_name']+' '+name['response'][0]['last_name']
-						if (random.randint(0,1)==0):
-							apisay('Есть вероятность, что '+answ_text+ '  - '+name,toho,'')
-						else:
-							apisay('Вангую, это '+answ_text+ '  - '+name,toho,'')
+#модули
 if answ[1] == 'модули':
 	apisay('<br>'.join(dir),toho,'')
 if (answ[1]=='надо'):
@@ -73,7 +56,7 @@ if answ[1] == 'когда':
         else:
                 apisay('Я думаю, ' +answ_text+' '+str(random.randint( 1,31))+' '+random.choice(months)+' '+str(random.randint(2018,2050)),toho,'')
 #Кто
-if (answ[1]=='кто'):	
+if (answ[0] in kb_name and answ[1] in ['кто','кому','кого']):
 					if (toho < 2000000000):
 						apisay('В личной переписке это не работает. Лишь в конфе',toho,torep)
 					else:
@@ -89,11 +72,12 @@ if (answ[1]=='кто'):
 							param = (('v', '5.68'), ('user_ids',res['response'][rand]),('access_token',token))
 							name = requests.post('https://api.vk.com/method/users.get', data=param)
 							name = json.loads(name.text)
+							id = name['response'][0]['id']
 							name = name['response'][0]['first_name']+' '+name['response'][0]['last_name']
 							if (random.randint(0,1)==0):
-								apisay('Есть вероятность, что '+answ_text+ ' - '+name,toho,'')
+								apisay('Есть вероятность, что '+answ_text+ ' - '+'[id'+str(id)+'|'+name+']',toho,'')
 							else:
-								apisay('Я уверена, '+answ_text+' у нас это '+name,toho,'')
+								apisay('Я уверена, '+answ_text+' у нас это '+'[id'+str(id)+'|'+name+']',toho,'')
 						except:
 							apisay('Ты!', toho, torep)
 if (answ[1]=='кофейник'):	
@@ -130,6 +114,26 @@ if (answ[1]=='повтори'):
 		apisay('Иди на хер, любитель рекурсива',toho,'')
 	else:
 		apisay(answ_text,toho,'')
+if (answ[1]=='бутылка'):	
+					if (toho < 2000000000):
+						apisay('Тут на бутылку посадят только тебя',toho,'')
+					else:
+						resapi = toho-2000000000;
+						text = answ
+						param = (('v', '5.68'), ('chat_id',resapi),('access_token',token))
+						res = requests.post('https://api.vk.com/method/messages.getChatUsers', data=param)
+						res = json.loads(res.text)
+						rand = random.randint(0,len(res['response'])-1)
+						param = (('v', '5.68'), ('user_ids',res['response'][rand]),('access_token',token))
+						name = requests.post('https://api.vk.com/method/users.get', data=param)
+						name = json.loads(name.text)
+						id = str(name['response'][0]['id'])
+						name = name['response'][0]['first_name']+' '+name['response'][0]['last_name']
+						msg = ["Разминай анус","Присаживайся","Хорошего сидеть","Обутылен","Надеюсь, это приятно","Главное, что я не присяду","Тебе норм... Наверное","Теперь ты точно Россиянин"]
+						if (random.randint(0,1)==0):
+							pic('but.jpg','Присядет на бутылочку у нас '+'[id'+id+'|'+name+']'+'<br>'+random.choice(msg), toho,'')
+						else:
+							pic('but.jpg','Я уверена, на бутылке у нас '+'[id'+id+'|'+name+']'+'<br>'+random.choice(msg),toho,'')
 #Потихоньку учу Леру своим ответам.
 if answ[1] == 'цит':
 	quotes = json.loads(open('files/txt/quotes/quote_cit','r').read())
