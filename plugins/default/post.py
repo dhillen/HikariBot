@@ -21,6 +21,7 @@ if answ[1] == 'пост':
 			domain = random.choice(groups['humor'])
 		else:
 			domain = random.choice(groups['humor'])
+			#apisay('Введи свой запрос верно',toho,'') #почему то с ответом идёт первый пост со стены бота можно как рекламу юзать ¯\_(ツ)_/¯
 		
 		get_count = requests.get('https://api.vk.com/method/wall.get?access_token='+str(token)+'&v=5.68', params={'domain': domain})
 		max = get_count.json()['response']['count']

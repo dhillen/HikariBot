@@ -126,8 +126,8 @@ if answ[1] == 'оцени':
                 apisay('Я оцениваю '+answ_text+' на '+str(random.randint(0,10))+' из 10',toho,torep)
 #Повторитель
 if (answ[1]=='повтори'):
-	if (answ_text == ''):
-		apisay('А что мне повторить то?',toho,'')
+	if (answ_text == 'лера чат'):
+		apisay('Иди на хер, любитель рекурсива',toho,'')
 	else:
 		apisay(answ_text,toho,'')
 #Потихоньку учу Леру своим ответам.

@@ -21,6 +21,19 @@ token = token.split('\n')[0]
 kb_name = json.loads(open('system/cfg/name','r').read())['names']
 answer_x = 0
 answer_time = time.time()*100000 #заморозка бота при активных действиях
+#Запрещенные слова
+def inblacklist(answ):
+	if answ[0].lower() not in kb_name:
+		return False
+
+	word = ' '.join(answ).lower()
+	blacklist_words = json.loads(open('system/blacklist_words','r').read())
+	
+	for i in range(len(blacklist_words)-1):
+		if word.find(blacklist_words[i]) != -1:
+			return True
+
+	return False
 #Лонгполл
 def apisay(text,toho,torep):
 	time.sleep(random.randint(0,3)) #таймаут ответа бота, защита от капчи
@@ -30,16 +43,6 @@ def apisay(text,toho,torep):
 def exitgame():
 	print(str(userid)+' покинул игру '+game_module['active_users'][str(userid)])
 	del game_module['active_users'][str(userid)]
-#Запрещенные слова
-def inblacklist(answ):
-	blacklist_words = json.loads(open('system/blacklist_words','r').read())
-	for i in range(len(blacklist_words)):
-		try:
-			answ.index(blacklist_words[i])
-			return True
-		except:
-			0
-	return False
 #Запрос изображения из директории изображений (tmp)
 def sendpic(pic,mess,toho,torep):
 	ret = requests.get('https://api.vk.com/method/photos.getMessagesUploadServer?access_token={access_token}&v=5.68'.format(access_token=token)).json()
