@@ -28,7 +28,7 @@ def inblacklist(answ):
 
 	word = ' '.join(answ).lower()
 	blacklist_words = json.loads(open('system/blacklist_words','r').read())
-	
+
 	for i in range(len(blacklist_words)-1):
 		if word.find(blacklist_words[i]) != -1:
 			return True
@@ -91,14 +91,14 @@ while True:
 		answer_x = 0
 		answer_time = time.time()*100000
 	try:
-		response = requests.get('https://{server}?act=a_check&key={key}&ts={ts}&wait=20&mode=2&version=2'.format(server=data['server'], key=data['key'], ts=data['ts'])).json() 
-		try: 
+		response = requests.get('https://{server}?act=a_check&key={key}&ts={ts}&wait=20&mode=2&version=2'.format(server=data['server'], key=data['key'], ts=data['ts'])).json()
+		try:
 			updates = response['updates'];
 		except KeyError:
 			data = requests.get('https://api.vk.com/method/messages.getLongPollServer?access_token='+str(token)+'&v=5.68&lp_version=2').text
 			data = json.loads(data)['response']
 			continue
-		if updates: 
+		if updates:
 			for result in updates:
 				if result[0] == 4:
 					toho = result[3]
@@ -131,14 +131,14 @@ while True:
 						if str(userid) in blacklist:
 							continue
 						if inblacklist(answ) == True:
-							apisay('Запрещенное для запроса слово', toho,'')	
+							apisay('Запрещенное для запроса слово', toho,'')
 							continue
 						answ[0] = answ[0].lower()
 						if answ[0].find(',') != -1:
 							answ[0] = answ[0].replace(',','')
 						answ[1] = answ[1].lower()
 						if (str(userid) not in game_module['active_users'] and (answ[0] in kb_name) and ((answ[1] in kb_cmd["default"]) or (answ[1] in kb_cmd["vip"]) or (answ[1] in kb_cmd["admin"]))):
-							print('[Упоминание Леры в '+str(toho)+']')
+							print('[Упоминание Хикари в '+str(toho)+']')
 							answ_text = result[5].split(' ')
 							if len(answ_text) >2:
 								answ_text.remove(answ_text[0])
