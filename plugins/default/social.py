@@ -36,17 +36,7 @@ if (answ[1]=='надо'):
 		else:
 			apisay('Да, надо '+answ_text,toho,'')
 	except:
-		apisay('Надоел уже, свали', toho, torep)
-#Статистика
-if (answ[0] in kb_name and answ[1] in ['стат','статус','стата']):
-	text = '[Инфо о системе]<br>Система:<br>&#8195;Процессоры:<br>'
-	for idx, cpu in enumerate(psutil.cpu_percent(interval=1, percpu=True)):
-		text += '&#8195;&#8195;Ядро №'+str(idx+1)+': '+str(cpu)+'%<br>'
-	mem = psutil.virtual_memory()
-	MB = 1024 * 1024
-	text += '&#8195;ОЗУ:<br>&#8195;&#8195;Всего: '+str(int(mem.total / MB))+'MB<br>&#8195;&#8195;Использовано: '+str(int((mem.total - mem.available) / MB))+'MB<br>&#8195;&#8195;Свободно: '+str(int(mem.available / MB))+'MB<br>&#8195;&#8195;Использовано ботом: '+str(int(psutil.Process().memory_info().vms / 10000000))+'MB<br>&#8195;'
-	param = (('v', '5.68'), ('peer_id',toho), ('access_token', token),('message', text)) #,('forward_messages',torep))
-	requests.post('https://api.vk.com/method/messages.send', param)
+		apisay('Надоел уже, свали', toho,'')
 #Обнова
 if answ[1] == 'обнова':
         apisay(open('files/txt/upd','r').read(),toho,torep)
@@ -66,6 +56,12 @@ if (answ[0] in kb_name and answ[1] in ['кто','кому','кого']):
 						try:
 							if(answ_text[-1] == '?'):
 								answ_text = answ_text.replace('?', '')
+							if answ_text.find('ты') == 0:
+								answ_text = answ_text.replace('ты ', 'я ')
+							if answ_text.find('меня') == 0:
+								answ_text = answ_text.replace('меня ', 'тебя ')
+							if answ_text.find('тебя') == 0:
+								answ_text = answ_text.replace('тебя ', 'меня ')
 							resapi = toho-2000000000;
 							text = answ
 							param = (('v', '5.68'), ('chat_id',resapi),('access_token',token))
