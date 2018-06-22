@@ -10,6 +10,6 @@ if (answ[0] in kb_name and answ[1] in ['стат','статус','стата']):
 	p = psutil.Process(os.getpid())
 	p.create_time()
 	end_time = time.monotonic()
-	text += '&#8195;ОЗУ:<br>&#8195;&#8195;Всего: '+str(int(mem.total / MB))+'MB<br>&#8195;&#8195;Использовано: '+str(int((mem.total - mem.available) / MB))+'MB<br>&#8195;&#8195;Свободно: '+str(int(mem.available / MB))+'MB<br>&#8195;&#8195;Использовано ботом: '+str(int(psutil.Process().memory_info().vms / 10000000))+'MB\nБот:\n&#8195;Обращений: '+str(m_time)+'\n&#8195;Аптайм: '+str(timedelta(seconds=round(end_time - start_time)))+'\n&#8195;Запущен: ' +time.strftime("%d.%m.%Y %H:%M", time.localtime(p.create_time())) + ' MSK'
+	text += '&#8195;ОЗУ:<br>&#8195;&#8195;Всего: '+str(int(mem.total / MB))+'MB<br>&#8195;&#8195;Использовано: '+str(int((mem.total - mem.available) / MB))+'MB<br>&#8195;&#8195;Свободно: '+str(int(mem.available / MB))+'MB<br>&#8195;&#8195;Использовано ботом: '+str(int(psutil.Process().memory_info().vms / 1000000))+'MB\nБот:\n&#8195;Обращений: '+str(m_time)+'\n&#8195;Аптайм: '+str(timedelta(seconds=round(end_time - start_time)))+'\n&#8195;Запущен: ' +time.strftime("%d.%m.%Y %H:%M", time.localtime(p.create_time())) + ' MSK'
 	param = (('v', '5.68'), ('peer_id',toho), ('access_token', token),('message', text)) #,('forward_messages',torep))
 	requests.post('https://api.vk.com/method/messages.send', param)
