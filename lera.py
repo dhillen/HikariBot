@@ -18,6 +18,8 @@ logging.error("An error has happened!")
 #начало бота
 token = open('system/cfg/token','r').read()
 token = token.split('\n')[0]
+start_time = time.monotonic()
+m_time=0
 kb_name = json.loads(open('system/cfg/name','r').read())['names']
 answer_x = 0
 answer_time = time.time()*100000 #заморозка бота при активных действиях
@@ -45,6 +47,7 @@ def exitgame():
 	del game_module['active_users'][str(userid)]
 #Запрос изображения из директории изображений (tmp)
 def sendpic(pic,mess,toho,torep):
+	time.sleep(random.randint(1,2))
 	ret = requests.get('https://api.vk.com/method/photos.getMessagesUploadServer?access_token={access_token}&v=5.68'.format(access_token=token)).json()
 	with open('tmp/'+pic, 'rb') as f:
 		ret = requests.post(ret['response']['upload_url'],files={'file1': f}).text
@@ -54,6 +57,7 @@ def sendpic(pic,mess,toho,torep):
 	requests.get('https://api.vk.com/method/messages.send?attachment=photo'+str(ret['response'][0]['owner_id'])+'_'+str(ret['response'][0]['id'])+'&message='+mess+'&v=5.68&forward_messages='+str(torep)+'&peer_id='+str(toho)+'&access_token='+str(token))
 #Запрос изображения из директории изображений (img)
 def pic(pic,mess,toho,torep):
+	time.sleep(random.randint(1,2))
 	ret = requests.get('https://api.vk.com/method/photos.getMessagesUploadServer?access_token={access_token}&v=5.68'.format(access_token=token)).json()
 	with open('files/img/'+pic, 'rb') as f:
 		ret = requests.post(ret['response']['upload_url'],files={'file1': f}).text
@@ -85,7 +89,7 @@ def evalcmds(directory,toho,torep,answ,answ_text):
 		exec(open(directory+'/'+str(dir[plugnum]),'r').read())
 game_module = open('system/game_module','r').read()
 game_module = json.loads(game_module)
-print('Лера запущена')
+print('Хикари запущена')
 while True:
 	if (time.time() - answer_time) > 60:
 		answer_x = 0
@@ -139,6 +143,7 @@ while True:
 						answ[1] = answ[1].lower()
 						if (str(userid) not in game_module['active_users'] and (answ[0] in kb_name) and ((answ[1] in kb_cmd["default"]) or (answ[1] in kb_cmd["vip"]) or (answ[1] in kb_cmd["admin"]))):
 							print('[Упоминание Хикари в '+str(toho)+']')
+							m_time +=1
 							answ_text = result[5].split(' ')
 							if len(answ_text) >2:
 								answ_text.remove(answ_text[0])
